@@ -17,3 +17,4 @@ until [ "$(curl -L -s -o /dev/null --max-time $TIMEOUT -I -w '%{http_code}' $URL
 done
 
 echo "ok"
+exit 0
