@@ -2,6 +2,7 @@
 
 TIMEOUT="${TIMEOUT:-60}"
 STATUS="${STATUS:-200}"
+EXTRA="${EXTRA:-0}"
 seconds=0
 
 echo 'Waiting up to' $TIMEOUT 'seconds for HTTP' $STATUS 'from' $URL
@@ -15,6 +16,6 @@ until [ "$(curl -L -s -o /dev/null --max-time $TIMEOUT -I -w '%{http_code}' $URL
   fi
   printf '...'
 done
-
+sleep $EXTRA
 echo "ok"
 exit 0
