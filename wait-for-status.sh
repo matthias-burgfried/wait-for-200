@@ -1,10 +1,11 @@
 #!/bin/bash
 
 TIMEOUT="${TIMEOUT:-600}"
+STATUS="${STATUS:200}"
 seconds=0
 
 echo 'Waiting up to' $TIMEOUT 'seconds for HTTP 200 from' $URL 
-until [ "$seconds" -gt "$TIMEOUT" ] || $(curl --output /dev/null --silent --max-time $TIMEOUT --head --fail $URL); do
+until [ "$seconds" -gt "$TIMEOUT" ] || $((curl --silent --max-time $TIMEOUT --head --fail $URL | head -n 1|cut -d$' ' -f2) == $STATUS); do
   printf '.'
   sleep 5
   seconds=$((seconds+5))
