@@ -1,5 +1,5 @@
-# wait-for-200
-Wait for HTTP 200 then exit
+# wait-for-status
+Wait for given HTTP then exit (default 200)
 
 ```
 docker run --rm -e URL=http://test.com stefanevinance/wait-for-200
