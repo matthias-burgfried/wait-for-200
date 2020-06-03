@@ -11,11 +11,11 @@ until [ "$(curl -L -s -o /dev/null --max-time $TIMEOUT -I -w '%{http_code}' $URL
   sleep 5
   seconds=$((seconds+5))
   if [ "$seconds" -gt "$TIMEOUT" ]; then
-    printf "\nERROR: Timed out wating for given HTTP Status from "$URL"\n"
+    printf "\nERROR: Timeout while waiting for HTTP Status ($STATUS) from "$URL"\n"
     exit 1
   fi
-  printf '...'
+  printf '.....'
 done
 sleep $EXTRA
-echo "ok"
+echo 'Done'
 exit 0
